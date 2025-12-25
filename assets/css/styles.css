@@ -200,6 +200,8 @@ nav a:hover {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--text-soft);
+  z-index: 10;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .hero-phone-placeholder {
@@ -235,18 +237,6 @@ nav a:hover {
   display: block;
   margin-bottom: 4px;
   font-size: 16px;
-}
-
-.hero-chip {
-  position: absolute;
-  bottom: 18px;
-  right: 18px;
-  font-size: 11px;
-  padding: 4px 9px;
-  border-radius: 999px;
-  background: rgba(34, 197, 94, 0.16);
-  border: 1px solid rgba(34, 197, 94, 0.55);
-  color: #bbf7d0;
 }
 
 /* SECTION WRAPPER */
@@ -372,14 +362,13 @@ nav a:hover {
 
 .visual-frame {
   border-radius: var(--radius-lg);
-  border: 1px dashed rgba(148, 163, 184, 0.7);
-  background: radial-gradient(circle at top, #020617 0, #020617 55%, #020617 100%);
-  min-height: 190px;
+  border: 1px solid var(--border-subtle); /* Solid Border */
+  background: transparent;
+  padding: 0; /* No Padding */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 12px;
   font-size: 12px;
   color: var(--text-soft);
   overflow: hidden;
@@ -546,9 +535,8 @@ footer {
     gap: 18px;
   }
 
-  .hero-visual {
-    order: -1;
-  }
+  /* REMOVED: .hero-visual { order: -1; } */
+  /* This ensures the title text appears before the video on mobile */
 
   .section {
     padding: 18px 14px 20px;
