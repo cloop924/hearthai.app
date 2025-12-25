@@ -55,20 +55,15 @@ header {
 .logo-lockup {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .logo-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
-  background: radial-gradient(circle at 20% 0, #38bdf8 0, #0f172a 45%, #020617 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.9);
-  font-size: 19px;
-  font-weight: 700;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 .logo-text-main {
@@ -271,10 +266,11 @@ nav a:hover {
 
 .section-kicker {
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 10px;
+  letter-spacing: 0.15em;
+  font-size: 14px; /* Increased Size */
+  font-weight: 700; /* Bold */
   color: var(--accent);
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .section-title {
@@ -386,6 +382,7 @@ nav a:hover {
   padding: 12px;
   font-size: 12px;
   color: var(--text-soft);
+  overflow: hidden;
 }
 
 .visual-frame strong {
