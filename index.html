@@ -1,0 +1,1085 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>HearThai – Thai Listening, Vocabulary, Grammar & Pronunciation App</title>
+  <meta name="description" content="HearThai is a Thai language app focused on real listening, fast vocabulary recall, 700+ grammar formulas, and clear pronunciation training for serious Thai learners." />
+
+  <!-- Basic social preview -->
+  <meta property="og:title" content="HearThai – Learn Thai the Way You Actually Use It" />
+  <meta property="og:description" content="Train Thai the right way: real audio, fast vocab drills, 700+ grammar formulas, and pronunciation that actually respects tones." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hearthai.app/web" />
+  <!-- You can update this when you have a share image -->
+  <meta property="og:image" content="https://hearthai.app/web/share-image-placeholder.png" />
+
+  <style>
+    :root {
+      --bg: #050913;
+      --bg-soft: #0e1422;
+      --panel: #111827;
+      --accent: #0ea5e9;
+      --accent-soft: rgba(14, 165, 233, 0.18);
+      --accent-strong: #22c55e;
+      --text-main: #f9fafb;
+      --text-soft: #9ca3af;
+      --border-subtle: #1f2937;
+      --max-width: 1040px;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #0b1220 0, #020617 50%, #02040a 100%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrap {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 16px 18px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 4px 20px;
+    }
+
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #38bdf8 0, #0f172a 45%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.9);
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .logo-text-main {
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      font-size: 17px;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    nav {
+      display: none;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    nav a {
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav a:hover {
+      color: #e5e7eb;
+      border-bottom-color: #4b5563;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 24px;
+      align-items: center;
+      margin-top: 6px;
+      margin-bottom: 40px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.15rem, 3vw, 2.7rem);
+      letter-spacing: 0.02em;
+      margin: 0 0 10px;
+    }
+
+    .hero-copy h1 span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-soft);
+      max-width: 420px;
+      margin-bottom: 18px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      border-radius: 999px;
+      color: #0b1120;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.75);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      font-size: 13px;
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .hero-caption {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 8px;
+    }
+
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1080 / 1920; /* Maintain phone screen proportions */
+      max-width: 360px; /* Good size for desktop */
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: var(--radius-xl);
+      border: 1px solid #1f2937;
+      overflow: hidden;
+      background: #000;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-label {
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+    }
+
+    .hero-phone-placeholder {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+    
+    .hero-phone-placeholder video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .hero-phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 80%);
+      border: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      text-align: center;
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
+    .hero-phone-screen strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+
+    .hero-chip {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.16);
+      border: 1px solid rgba(34, 197, 94, 0.55);
+      color: #bbf7d0;
+    }
+
+    /* SECTION WRAPPER */
+
+    .section {
+      margin-bottom: 40px;
+      padding: 22px 18px 24px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, #0b1220 0, #020617 60%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-header {
+      margin-bottom: 16px;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 10px;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin: 0 0 6px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      max-width: 520px;
+    }
+
+    /* THREE PILLARS */
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .pillar-card {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 14px 14px 16px;
+      position: relative;
+    }
+
+    .pillar-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .pillar-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .pillar-body {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    .pillar-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: #e5e7eb;
+    }
+
+    /* FEATURE GRIDS */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .feature-grid.reverse {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    }
+
+    .feature-text h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .feature-text p {
+      margin: 0 0 10px;
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    .feature-bullets {
+      list-style: none;
+      margin: 6px 0 0;
+      padding: 0;
+      font-size: 12px;
+      color: #e5e7eb;
+    }
+
+    .feature-bullets li {
+      margin-bottom: 4px;
+    }
+
+    .visual-frame {
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top, #020617 0, #020617 55%, #020617 100%);
+      min-height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .visual-frame strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #e5e7eb;
+    }
+
+    /* WHY DIFFERENT */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 4px;
+    }
+
+    .compare-list {
+      list-style: none;
+      margin: 4px 0 0;
+      padding: 0;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .compare-list li {
+      margin-bottom: 6px;
+    }
+
+    .compare-tag {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    /* WHO IT'S FOR */
+
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .persona-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 12px 12px 14px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .persona-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #e5e7eb;
+    }
+
+    /* ROUTINE */
+
+    .routine-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .routine-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 12px;
+    }
+
+    .routine-title {
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .faq-item {
+      border-top: 1px solid #1f2937;
+      padding: 10px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* FINAL CTA */
+
+    .final-cta {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .final-cta h2 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .final-cta p {
+      margin: 0 0 16px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .final-cta .btn-primary {
+      margin-bottom: 6px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 11px;
+      color: #4b5563;
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 820px) {
+      .page-wrap {
+        padding: 12px 14px 40px;
+      }
+
+      header {
+        padding-bottom: 12px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        gap: 18px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .section {
+        padding: 18px 14px 20px;
+      }
+
+      .pillars {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .feature-grid,
+      .feature-grid.reverse,
+      .two-col,
+      .persona-grid,
+      .routine-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-phone-placeholder {
+        inset: 56px 32px 24px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- HEADER -->
+    <header>
+      <div class="logo-lockup">
+        <div class="logo-mark">กA</div>
+        <div>
+          <div class="logo-text-main">HearThai</div>
+          <div class="logo-text-sub">Thai listening, vocabulary & grammar</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#how-it-works">How it works</a>
+        <a href="#grammar-system">Grammar</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <h1>
+            Train Thai like a<br />
+            <span>real language</span>.
+          </h1>
+          <p class="hero-sub">
+            HearThai focuses on the three skills that actually move you forward:
+            fast vocabulary recall, clear pronunciation, and Thai grammar formulas
+            that show you exactly how sentences are built.
+          </p>
+
+          <div class="hero-pills">
+            <div class="pill">Real Thai audio</div>
+            <div class="pill">Fast vocab drills</div>
+            <div class="pill">700+ grammar formulas</div>
+            <div class="pill">Tone-focused listening</div>
+          </div>
+
+          <div class="hero-ctas">
+            <a class="btn-primary" href="https://apps.apple.com/app/hearthai" target="_blank">
+              Download on the App Store
+            </a>
+            <a class="btn-secondary" href="#how-it-works">
+              See how HearThai works
+            </a>
+          </div>
+
+          <div class="hero-caption">
+            Built for learners who actually want to speak Thai, not just collect words.
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-label">Live app preview</div>
+        
+          <div class="hero-phone-placeholder">
+              <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:24px;">
+                  <source src="media/hero.mp4" type="video/mp4">
+              </video>
+          </div>
+        
+          <div class="hero-chip">iPhone + iPad app</div>
+        </div>
+
+      </section>
+
+      <!-- THREE PILLARS -->
+      <section class="section" id="how-it-works">
+        <div class="section-header">
+          <div class="section-kicker">Method</div>
+          <h2 class="section-title">Three things that actually lead to Thai fluency</h2>
+          <p class="section-sub">
+            HearThai is built around the three skills that make Thai usable in real conversation:
+            vocabulary you can recall instantly, grammar you can see, and pronunciation that respects tones.
+          </p>
+        </div>
+
+        <div class="pillars">
+          <article class="pillar-card">
+            <div class="pillar-tag">Vocab</div>
+            <div class="pillar-label">Pillar 1</div>
+            <div class="pillar-title">Fast vocabulary recall</div>
+            <div class="pillar-body">
+              Hear Thai words, choose the meaning, and move on. The app adapts to what you get right and wrong so
+              common words become automatic instead of “I know this, let me think…”.
+            </div>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-tag">Grammar</div>
+            <div class="pillar-label">Pillar 2</div>
+            <div class="pillar-title">700+ grammar formulas</div>
+            <div class="pillar-body">
+              See Thai grammar as clear formulas: subject, verb, object, particles, and aspect markers.
+              Tap through 700+ patterns with examples so you start recognizing structures instead of guessing.
+            </div>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-tag">Pronunciation</div>
+            <div class="pillar-label">Pillar 3</div>
+            <div class="pillar-title">Pronunciation through listening</div>
+            <div class="pillar-body">
+              Every word and sentence is backed by high-quality Thai audio.
+              You hear tones in real speech and match what you say to what you hear, not to rough romanization.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- VOCAB DRILLS -->
+      <section class="section" id="vocab">
+        <div class="section-header">
+          <div class="section-kicker">Vocabulary</div>
+          <h2 class="section-title">Train vocabulary at the speed you think</h2>
+          <p class="section-sub">
+            HearThai’s vocab mode is built for recognition and recall speed. You hear a Thai word, pick the meaning,
+            and move on. Words you know drop out. Words you miss come back more often.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-text">
+            <h3>Hear → tap → move on</h3>
+            <p>
+              Short audio prompts push you to respond quickly instead of staring at word lists.
+              You can cover dozens of words in a few minutes without feeling like you are doing a test.
+            </p>
+            <ul class="feature-bullets">
+              <li>Audio-first word prompts</li>
+              <li>Multiple-choice meanings for each word</li>
+              <li>Mark words as “mastered” so they appear less often</li>
+              <li>Favorite difficult words for extra repetition</li>
+            </ul>
+          </div>
+          <div class="visual-frame">
+            <div>
+              <strong>[APP VISUAL: Close-up vocab 2×2 grid]</strong>
+              <div>
+                Replace this box with a zoomed screen of the vocab game:
+                one Thai word at the top, four big answer buttons, and a correct answer highlight animation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-grid reverse" style="margin-top: 22px;">
+          <div class="visual-frame">
+            <div>
+              <strong>[APP VISUAL: Fast vocab scroll]</strong>
+              <div>
+                Replace with a short sequence of 4–6 rapid vocab prompts,
+                showing how quickly a learner can cycle through known words.
+              </div>
+            </div>
+          </div>
+          <div class="feature-text">
+            <h3>Built around recall, not recognition</h3>
+            <p>
+              Recognizing a word when you see it on a list is not the same as recalling it in conversation.
+              HearThai focuses on recall under light time pressure so the vocab you “know” turns into vocab you can
+              actually use.
+            </p>
+            <ul class="feature-bullets">
+              <li>Short, repeatable sessions that fit into real life</li>
+              <li>Session speed you can increase as you get more confident</li>
+              <li>Immediate feedback when you miss a word</li>
+              <li>Designed for learners who want to speak, not just read</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- GRAMMAR SYSTEM -->
+      <section class="section" id="grammar-system">
+        <div class="section-header">
+          <div class="section-kicker">Grammar</div>
+          <h2 class="section-title">See how Thai sentences are actually built</h2>
+          <p class="section-sub">
+            HearThai organizes Thai grammar into more than 700 formulas. Each card shows a pattern, example sentences,
+            and audio so you understand the order of words without memorizing abstract rules.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-text">
+            <h3>Grammar as formulas, not theory</h3>
+            <p>
+              Each formula breaks Thai into clear pieces: subject, verb, object, particles, time, and more.
+              You see how the pieces fit, then you hear the full sentence.
+            </p>
+            <ul class="feature-bullets">
+              <li>Formula view for S + V + O and other core patterns</li>
+              <li>Thai and English examples for each pattern</li>
+              <li>Audio for every example sentence</li>
+              <li>Intro path with the most common structures first</li>
+            </ul>
+          </div>
+          <div class="visual-frame">
+            <div>
+              <strong>[APP VISUAL: Grammar formula stack]</strong>
+              <div>
+                Replace with a screen of stacked grammar cards:
+                formula at the top, Thai sentence in the middle, English sentence at the bottom.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-grid reverse" style="margin-top: 22px;">
+          <div class="visual-frame">
+            <div>
+              <strong>[APP VISUAL: Cycling through grammar cards]</strong>
+              <div>
+                Replace with a short screen recording where several grammar patterns are tapped through in order,
+                showing how the app moves from simple to more complex formulas.
+              </div>
+            </div>
+          </div>
+          <div class="feature-text">
+            <h3>From basic patterns to 700+ rules</h3>
+            <p>
+              You start with patterns you already know from real speech, then expand into more detailed structures.
+              The goal is to recognize patterns when you hear or read them, and to build your own sentences from them.
+            </p>
+            <ul class="feature-bullets">
+              <li>Core beginner formulas grouped together</li>
+              <li>Intermediate and advanced structures available when you are ready</li>
+              <li>Designed as a reference you can come back to</li>
+              <li>Makes other Thai content easier to understand</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRONUNCIATION / LISTENING -->
+      <section class="section" id="pronunciation">
+        <div class="section-header">
+          <div class="section-kicker">Pronunciation & Listening</div>
+          <h2 class="section-title">Train your ear so tones stop feeling random</h2>
+          <p class="section-sub">
+            HearThai is built around audio. Words and sentences are meant to be listened to repeatedly,
+            so you get used to how Thai actually sounds before you worry about spelling and romanization.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-text">
+            <h3>Audio-first for every word and sentence</h3>
+            <p>
+              Instead of reading long explanations about tones, you hear Thai in natural speech and then copy it.
+              The app makes it easy to replay and compare as many times as you need.
+            </p>
+            <ul class="feature-bullets">
+              <li>Tap to hear each word or sentence as many times as needed</li>
+              <li>Use headphones or speakers without extra configuration</li>
+              <li>Focus on listening first, reading second</li>
+              <li>Designed for people who want to actually speak Thai</li>
+            </ul>
+          </div>
+          <div class="visual-frame">
+            <div>
+              <strong>[APP VISUAL: Pronunciation / audio focus]</strong>
+              <div>
+                Replace with a screen showing a sentence, a prominent play button,
+                and a simple waveform or playback indicator behind it.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-grid reverse" style="margin-top: 22px;">
+          <div class="visual-frame">
+            <div>
+              <strong>[APP VISUAL: Listen-and-respond flow]</strong>
+              <div>
+                Replace with a short screen recording where a learner hears a sentence,
+                taps a related response or meaning, and replays audio for clarity.
+              </div>
+            </div>
+          </div>
+          <div class="feature-text">
+            <h3>Practice hearing before you worry about tones by name</h3>
+            <p>
+              HearThai does not require you to think about tone charts every time you hear a word.
+              You listen, copy, and slowly build a sense for what sounds right.
+            </p>
+            <ul class="feature-bullets">
+              <li>Natural audio instead of robotic text-to-speech</li>
+              <li>Short segments you can repeat many times</li>
+              <li>Compatible with everyday commuting and spare moments</li>
+              <li>Works alongside any other Thai course or textbook</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO IT'S FOR -->
+      <section class="section" id="who-for">
+        <div class="section-header">
+          <div class="section-kicker">Who It’s For</div>
+          <h2 class="section-title">Built for serious Thai learners at any level</h2>
+          <p class="section-sub">
+            HearThai is not a game. It is for people who actually want to use Thai in real conversation,
+            whether you are just starting or you have been studying for years and feel stuck.
+          </p>
+        </div>
+
+        <div class="persona-grid">
+          <article class="persona-card">
+            <div class="persona-title">New learners</div>
+            <p>
+              You want a clear way to start without getting lost in grammar explanations.
+              Use HearThai for clear basic patterns, starting vocab, and real pronunciation
+              before you dive into heavy textbooks.
+            </p>
+          </article>
+          <article class="persona-card">
+            <div class="persona-title">Intermediate learners</div>
+            <p>
+              You recognize many words but cannot speak as quickly as you think.
+              Use vocab drills for recall speed and the grammar formulas to see
+              how the Thai you already know fits together.
+            </p>
+          </article>
+          <article class="persona-card">
+            <div class="persona-title">Long-term learners</div>
+            <p>
+              You have tried multiple apps, courses, and maybe even classes.
+              HearThai gives you a system to organize what you know:
+              patterns, audio, and vocabulary in one place.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- WHY DIFFERENT -->
+      <section class="section" id="why-different">
+        <div class="section-header">
+          <div class="section-kicker">Why HearThai</div>
+          <h2 class="section-title">Why this app feels different from other Thai apps</h2>
+          <p class="section-sub">
+            HearThai is focused on making Thai usable, not just passable on quizzes.
+            It combines rapid listening practice with a clear grammar system and vocabulary
+            that you can actually recall in conversation.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <h3>Most Thai apps</h3>
+            <ul class="compare-list">
+              <li><span class="compare-tag">Memorization-first:</span> long word lists and flashcards.</li>
+              <li><span class="compare-tag">Light grammar:</span> scattered explanations with few real patterns.</li>
+              <li><span class="compare-tag">Weak audio:</span> limited or robotic speech.</li>
+              <li><span class="compare-tag">Quiz feeling:</span> focus on scores instead of speaking.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>HearThai</h3>
+            <ul class="compare-list">
+              <li><span class="compare-tag">Audio-first:</span> every word and sentence comes from real Thai audio.</li>
+              <li><span class="compare-tag">Structured grammar:</span> 700+ formulas grouped by real sentence patterns.</li>
+              <li><span class="compare-tag">Fast vocab recall:</span> quick-fire sessions built around response speed.</li>
+              <li><span class="compare-tag">Speech-focused:</span> everything is designed to move you toward conversation.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROUTINE / HOW TO USE DAILY -->
+      <section class="section" id="routine">
+        <div class="section-header">
+          <div class="section-kicker">Daily Use</div>
+          <h2 class="section-title">A simple routine that fits real life</h2>
+          <p class="section-sub">
+            HearThai is designed so you can make real progress in short sessions.
+            You can use it entirely on its own or alongside any other Thai course, textbook, or tutor.
+          </p>
+        </div>
+
+        <div class="routine-grid">
+          <article class="routine-card">
+            <div class="routine-title">Short vocab bursts</div>
+            <p>
+              Open the vocab trainer whenever you have a spare moment.
+              Run quick rounds of 10–20 words, mark the ones you know, and favorite the ones that need work.
+            </p>
+          </article>
+          <article class="routine-card">
+            <div class="routine-title">Focused grammar time</div>
+            <p>
+              A few times a week, open the grammar formulas and work through several cards in order.
+              Listen to the examples, read the Thai, and notice how the pattern repeats.
+            </p>
+          </article>
+          <article class="routine-card">
+            <div class="routine-title">Listening & speaking practice</div>
+            <p>
+              Replay audio for sentences and words that matter to you.
+              Copy what you hear out loud, then test yourself in conversation with Thai speakers around you or online.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- FAQ / PRICING -->
+      <section class="section" id="faq">
+        <div class="section-header">
+          <div class="section-kicker">Questions</div>
+          <h2 class="section-title">Frequently asked questions</h2>
+          <p class="section-sub">
+            A few quick answers about how HearThai fits into your Thai learning and what to expect when you start.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">Do I need to know any Thai before I start?</div>
+            <div class="faq-a">
+              No. HearThai works for complete beginners and for learners who already know a lot of words.
+              Beginners can focus on basic vocabulary, simple patterns, and pronunciation. Experienced learners can
+              use it to organize what they know and train recall speed.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Does HearThai replace textbooks or classes?</div>
+            <div class="faq-a">
+              HearThai is designed to sit beside whatever you already use. Textbooks and classes explain ideas;
+              HearThai gives you the repetition and audio you need so those ideas show up in your speech.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How much grammar does the app cover?</div>
+            <div class="faq-a">
+              HearThai includes more than 700 grammar formulas covering everyday sentence patterns, core particles,
+              common aspect markers, and structures that appear frequently in real Thai. New patterns can be added
+              over time without changing how the app feels.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Is this only for iPhone and iPad?</div>
+            <div class="faq-a">
+              HearThai is built primarily for iPhone and iPad users. The experience is designed around mobile use so
+              you can practice listening, vocabulary, and grammar wherever you are.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How much time do I need to use it each day?</div>
+            <div class="faq-a">
+              Even a few minutes a day is enough to run several vocab rounds or review a set of grammar formulas.
+              You can take longer sessions when you have them, but HearThai is designed to fit into short gaps in your day.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="section" id="pricing">
+        <div class="final-cta">
+          <h2>Start training Thai the way you use it.</h2>
+          <p>
+            Real audio, fast vocab drills, and a full grammar formula system — all focused on helping you speak Thai
+            more clearly and confidently.
+          </p>
+          <a class="btn-primary" href="https://apps.apple.com/app/hearthai" target="_blank">
+            Download HearThai on the App Store
+          </a>
+          <div class="hero-caption">
+            Install on iPhone or iPad and start your first listening and vocab session in a few minutes.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      HearThai &copy; <span id="year"></span>. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Simple year update
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+```
