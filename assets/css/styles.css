@@ -22,7 +22,7 @@
   --radius-xl: 24px;
   
   --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.15);
+  --shadow-glow: 0 0 28px rgba(56, 189, 248, 0.2);
 }
 
 * {
@@ -208,7 +208,7 @@ nav a:hover {
   margin-top: 12px;
 }
 
-/* FIX: Changed border from 4px to 1px and removed excess styling */
+/* HERO PHONE FRAME */
 .hero-visual {
   position: relative;
   width: 100%;
@@ -219,7 +219,7 @@ nav a:hover {
   box-shadow: var(--shadow-soft);
   overflow: hidden;
   background: #000;
-  aspect-ratio: 9/19;
+  aspect-ratio: 9/16;
 }
 
 .hero-phone-placeholder {
@@ -240,6 +240,7 @@ nav a:hover {
   border-radius: var(--radius-xl);
   background: var(--bg-soft);
   border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-glow);
 }
 
 .section-header {
@@ -285,12 +286,13 @@ nav a:hover {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 20px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .mode-card:hover {
   border-color: var(--border-highlight);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
 }
 
 .mode-icon {
@@ -330,6 +332,7 @@ nav a:hover {
   border: 1px solid rgba(31, 41, 55, 0.9);
   padding: 14px 14px 16px;
   position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .pillar-label {
@@ -414,6 +417,7 @@ nav a:hover {
   font-weight: 800;
 }
 
+/* VISUAL FRAMES */
 .visual-frame {
   border-radius: 20px;
   overflow: hidden;
@@ -423,13 +427,48 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  aspect-ratio: 9 / 16; /* Default for app video frames */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.visual-frame img, 
+.visual-frame:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 44px rgba(0,0,0,0.6);
+}
+
+.visual-frame img,
 .visual-frame video {
   display: block;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Square still images (1:1) */
+.visual-frame.square-frame {
+  aspect-ratio: 1 / 1;
+}
+
+
+/* 600×800 Still Frame */
+.visual-frame.still-600x800 {
+  aspect-ratio: 4 / 3; /* 600 x 800 */
+  width: 100%;
+  max-width: 500px; /* keeps them sized appropriately on mobile */
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visual-frame.still-600x800 img,
+.visual-frame.still-600x800 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ROUTINE & PERSONA GRIDS */
@@ -458,6 +497,27 @@ nav a:hover {
   font-size: 14px;
   color: var(--text-soft);
   line-height: 1.6;
+}
+
+.visual-frame-800x600 {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  background: #000;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 4 / 3; /* 800 × 600 */
+  width: 100%;
+  max-width: 500px;
+}
+
+.visual-frame-800x600 video,
+.visual-frame-800x600 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fill frame, no letterboxing */
 }
 
 /* LEGACY PILLAR & ROUTINE SUPPORT (Keep for safety) */
