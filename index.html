@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 
   <style>
-    /* Split layout for Vocab Header */
+    /* 1. Desktop Layout (Default) */
     .vocab-header-split {
       display: flex;
       align-items: center;
@@ -25,37 +25,50 @@
       margin-bottom: 3rem;
       text-align: left;
     }
+    
     .vocab-header-split .section-sub {
-      flex: 1;
+      flex: 1; /* Text takes remaining space */
       margin: 0;
     }
+    
     .vocab-header-split .header-img {
-      flex: 1;
-      max-width: 400px; /* Limits image size on desktop */
-      height: auto;
+      /* Desktop size */
+      flex: 0 0 250px; 
+      max-width: 300px; 
     }
+    
     .vocab-header-split .header-img img {
       width: 100%;
       height: auto;
-      border-radius: 12px; /* Matches your general style */
+      border-radius: 12px;
+      display: block; /* Removes bottom space */
     }
 
-    /* Standalone text block (formerly next to image) */
+    /* 2. Standalone text block (formerly next to image) */
     .feature-text-standalone {
       max-width: 800px;
       margin: 0 auto 4rem auto;
       text-align: left;
     }
 
-    /* Mobile Optimization */
+    /* 3. Mobile Optimization (iPhone View) */
     @media (max-width: 768px) {
       .vocab-header-split {
-        flex-direction: column; /* Stacks text on top, image below */
-        gap: 1.5rem;
+        /* FORCE ROW: Keep them side-by-side */
+        flex-direction: row; 
+        align-items: center; 
+        gap: 1rem; /* Tighter gap for small screens */
       }
+
       .vocab-header-split .header-img {
-        max-width: 100%;
-        width: 100%;
+        /* FORCE SIZE: Approx 1/3 of screen (100-130px) */
+        flex: 0 0 50px; 
+        width: 50px;
+      }
+
+      /* Adjust text size slightly if needed to fit */
+      .vocab-header-split .section-sub {
+        font-size: 1rem; 
       }
     }
   </style>
