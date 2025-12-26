@@ -1,123 +1,103 @@
-<section class="section" id="who-for">
-  <div class="section-header">
-    <div class="section-kicker">Who it’s for</div>
-    <h2 class="section-title">Learners who want to actually speak</h2>
-    <p class="section-sub">
-      From Day 1 beginners to learners leveling up pronunciation and grammar.
-    </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>HearThai – Master Thai with 5 Core Learning Modes</title>
+  <meta name="description" content="The complete Thai learning system. Master Vocab, Phrases, Grammar, Writing, and Speaking with premiere audio and formulas." />
+
+  <meta property="og:title" content="HearThai – Learn Thai the Way You Actually Use It" />
+  <meta property="og:description" content="5 Modes to Fluency: Vocab, Phrases, Grammar, Writing, and Speaking. No robotic audio, just real results." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://learn.hearthai.app" />
+  <meta property="og:image" content="https://learn.hearthai.app/media/share-image-placeholder.png" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <div class="page-wrap">
+
+    <header>
+      <div class="logo-lockup">
+        <img src="media/button.png" class="logo-mark" alt="HearThai Logo" />
+        <div>
+          <div class="logo-text-main">HearThai</div>
+          <div class="logo-text-sub">The complete Thai learning system</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#how-it-works">The Method</a>
+        <a href="#vocab">Vocab & Phrases</a>
+        <a href="#grammar-system">Grammar</a>
+        <a href="#speaking">Speaking</a>
+      </nav>
+    </header>
+
+    <main>
+      <div id="module-hero"></div>
+      <div id="module-method"></div>
+      <div id="module-vocab"></div>
+      <div id="module-grammar"></div>
+      <div id="module-writing"></div>
+      <div id="module-speaking"></div>
+      <div id="module-details"></div>
+    </main>
+
+    <footer>
+      HearThai &copy; <span id="year"></span>. All rights reserved.
+    </footer>
   </div>
 
-  <div class="persona-grid">
-    <article class="persona-card">
-      <div class="persona-title">New learners</div>
-      <p>Simplify the start: vocab, patterns, real pronunciation.</p>
-    </article>
+  <script>
+    async function loadModule(elementId, filePath) {
+      try {
+        const response = await fetch(filePath);
+        if (!response.ok) throw new Error(`Could not load ${filePath}`);
+        const html = await response.text();
+        document.getElementById(elementId).innerHTML = html;
+      } catch (error) {
+        console.error("Error loading module:", error);
+      }
+    }
 
-    <article class="persona-card">
-      <div class="persona-title">Intermediate</div>
-      <p>Turn “I know this” into fast recall and speech.</p>
-    </article>
+    async function initPage() {
+      // Load all modules
+      await Promise.all([
+        loadModule('module-hero', 'modules/hero.html'),
+        loadModule('module-method', 'modules/method.html'),
+        loadModule('module-vocab', 'modules/vocab.html'),
+        loadModule('module-grammar', 'modules/grammar.html'),
+        loadModule('module-writing', 'modules/writing.html'),
+        loadModule('module-speaking', 'modules/speaking.html'),
+        loadModule('module-details', 'modules/details.html')
+      ]);
 
-    <article class="persona-card">
-      <div class="persona-title">Long-term</div>
-      <p>Organize everything you know — with audio.</p>
-    </article>
-  </div>
-</section>
+      // Set Year
+      const yearSpan = document.getElementById('year');
+      if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-<section class="section" id="why-different">
-  <div class="section-header">
-    <div class="section-kicker">Why HearThai</div>
-    <h2 class="section-title">A system for fluency</h2>
-    <p class="section-sub">
-      Audio-first + recall training + real grammar.
-    </p>
-  </div>
-  <div class="two-col">
-    <div>
-      <h3>Other apps</h3>
-      <ul class="compare-list">
-        <li>Long memorization lists</li>
-        <li>Weak grammar support</li>
-        <li>Artificial audio</li>
-        <li>Quiz mentality</li>
-      </ul>
-    </div>
-    <div>
-      <h3>HearThai</h3>
-      <ul class="compare-list">
-        <li>Natural native audio</li>
-        <li>700+ grammar patterns</li>
-        <li>Recall-speed training</li>
-        <li>Built for real speech</li>
-      </ul>
-    </div>
-  </div>
-</section>
+      // Initialize Video Observer
+      const videos = document.querySelectorAll("video.scroll-audio");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.muted = false;
+            entry.target.play();
+          } else {
+            entry.target.pause();
+            entry.target.muted = true;
+          }
+        });
+      }, { threshold: 0.45 });
+      videos.forEach(v => observer.observe(v));
+    }
 
-<section class="section" id="routine">
-  <div class="section-header">
-    <div class="section-kicker">Daily Use</div>
-    <h2 class="section-title">A real routine for real life</h2>
-    <p class="section-sub">
-      Short bursts → noticeable growth.
-    </p>
-  </div>
+    document.addEventListener("DOMContentLoaded", initPage);
+  </script>
 
-  <div class="routine-grid">
-    <article class="routine-card">
-      <div class="routine-title">Quick vocab bursts</div>
-      <p>10–20 words anytime. Train speed.</p>
-    </article>
-
-    <article class="routine-card">
-      <div class="routine-title">Grammar focus</div>
-      <p>Work through formulas a few times a week.</p>
-    </article>
-
-    <article class="routine-card">
-      <div class="routine-title">Speak & compare</div>
-      <p>Practice pronunciation with audio feedback.</p>
-    </article>
-  </div>
-</section>
-
-<section class="section" id="faq">
-  <div class="section-header">
-    <div class="section-kicker">Questions</div>
-    <h2 class="section-title">FAQ</h2>
-  </div>
-
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">Beginner friendly?</div>
-      <div class="faq-a">Yes. Start Day 1.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Replaces classes?</div>
-      <div class="faq-a">Complements them.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">How much grammar?</div>
-      <div class="faq-a">700+ patterns.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">iPhone only?</div>
-      <div class="faq-a">Currently yes.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Daily time needed?</div>
-      <div class="faq-a">Even 3 minutes works.</div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="pricing">
-  <div class="final-cta">
-    <h2>Start training Thai the way you use it</h2>
-    <p>Audio-first, recall-speed training, and structured grammar.</p>
-    <a class="btn-primary" href="https://hearthai.app" target="_blank">
-      Download HearThai on the App Store
-    </a>
-  </div>
-</section>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
