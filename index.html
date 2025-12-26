@@ -15,8 +15,27 @@
 
   <link rel="stylesheet" href="assets/css/styles.css" />
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '844623074617591');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=844623074617591&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
   <style>
-    /* Existing Styles */
     .split-layout {
       display: flex;
       align-items: center;
@@ -25,21 +44,17 @@
       margin-bottom: 3rem;
       text-align: left;
     }
-
     .split-layout .split-text {
       flex: 1;
       min-width: 0;
     }
-    
     .split-layout .split-text p {
       margin-top: 0;
     }
-
     .split-layout .split-visual {
       flex: 0 0 280px;
       max-width: 280px;
     }
-
     .split-layout .split-visual img,
     .split-layout .split-visual video {
       width: 100%;
@@ -48,61 +63,50 @@
       display: block;
       object-fit: cover;
     }
-
     .standalone-text {
       max-width: 800px;
       margin: 0 auto 4rem auto;
       text-align: left;
     }
-
-    /* STYLE: For full-width visual elements */
     .section-visual-banner {
       width: 100%;
-      max-width: 900px; /* Default max width, overridden inline where needed */
+      max-width: 900px;
       margin: 2rem auto 3rem auto;
       display: block;
       text-align: center;
     }
-    
     .section-visual-banner img {
       width: 100%;
       height: auto;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      display: inline-block; /* Allows center alignment */
+      display: inline-block;
     }
-
     @media (max-width: 820px) {
       .split-layout {
         flex-direction: row;
         align-items: flex-start;
         gap: 1rem;
       }
-
       .hero-ctas {
         margin-top: 22px !important;
       }
-
       .hero {
         margin-bottom: 40px !important;
       }
-
       #speaking video.scroll-audio {
         aspect-ratio: 4 / 3;
         max-width: 800px;
         width: 100%;
         object-fit: cover;
       }
-
       .split-layout .split-visual {
         flex: 0 0 125px;
         width: 125px;
       }
-
       .split-layout .split-text {
         font-size: 0.95rem;
       }
-
       .section-visual-banner {
         margin: 1.5rem auto 2rem auto;
       }
@@ -140,7 +144,10 @@
               </p>
 
               <div class="hero-ctas" style="margin-top: 1.5rem;">
-                <a class="btn-primary" href="https://hearthai.app" target="_blank">
+                <a class="btn-primary"
+                   href="https://hearthai.app"
+                   target="_blank"
+                   onclick="fbq('trackCustom', 'ClickToStore');">
                   Download on the App Store
                 </a>
               </div>
@@ -286,7 +293,7 @@
             </video>
           </div>
           <div class="feature-text">
-            <h3>Walk into advanced Thai naturally</h3>
+            <h3>Walk into advanced Thai naturally</hh3>
             <p>
               New structures build on what you already speak and hear in real Thai.
             </p>
@@ -501,7 +508,10 @@
           <p>
             Audio-first, recall-speed training, and structured grammar.
           </p>
-          <a class="btn-primary" href="https://hearthai.app" target="_blank">
+          <a class="btn-primary"
+             href="https://hearthai.app"
+             target="_blank"
+             onclick="fbq('trackCustom', 'ClickToStore');">
             Download HearThai on the App Store
           </a>
         </div>
