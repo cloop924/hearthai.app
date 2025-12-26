@@ -55,25 +55,21 @@
       text-align: left;
     }
 
-    /* NEW STYLE: For the new full-width visual elements */
+    /* STYLE: For full-width visual elements */
     .section-visual-banner {
       width: 100%;
-      max-width: 900px;
+      max-width: 900px; /* Default max width, overridden inline where needed */
       margin: 2rem auto 3rem auto;
       display: block;
+      text-align: center;
     }
     
     .section-visual-banner img {
       width: 100%;
       height: auto;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2); /* Subtle lift */
-      display: block;
-    }
-
-    /* Small tweak for the HUD image to not be too huge */
-    .hud-limit {
-        max-width: 600px; 
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      display: inline-block; /* Allows center alignment */
     }
 
     @media (max-width: 820px) {
@@ -168,11 +164,7 @@
             HearThai is built around the three skills that make Thai usable in real conversation:
             recall, structure, and sound.
           </p>
-
-          <div class="section-visual-banner hud-limit">
-            <img src="media/method-pillars-hud.jpg" alt="The HearThai Learning Ecosystem: Recall, Patterns, Audio leading to Fluency">
           </div>
-        </div>
 
         <div class="pillars">
           <article class="pillar-card">
@@ -265,28 +257,19 @@
         <div class="section-header">
           <div class="section-kicker">Grammar</div>
           <h2 class="section-title">See how Thai sentences are actually built</h2>
-          
-          <div class="split-layout">
-            <div class="split-text">
-              <p class="section-sub">
-                More than 700 patterns showing how Thai is *actually* spoken.
-              </p>
-            </div>
-            <div class="split-visual">
-              <img src="media/grammar-stack.png" alt="Grammar Cards">
-            </div>
-          </div>
+          <p class="section-sub">
+            More than 700 patterns showing how Thai is *actually* spoken.
+          </p>
         </div>
 
-        <div class="section-visual-banner">
-          <img src="media/grammar-logic-blocks.jpg" alt="Thai grammar visualised as interlocking, logical building blocks">
+        <div class="section-visual-banner" style="max-width: 800px;">
+          <img src="media/grammar-stack.png" alt="Grammar Cards showing sentence structure" width="800" height="600">
         </div>
 
         <div class="standalone-text">
           <h3>Formula-based Thai</h3>
           <p>
             Thai grammar appears clearly: Subject → Verb → Object → Time → Particles → Aspect markers.
-            Visualizing the language as stackable blocks helps you build complex sentences with confidence.
           </p>
           <ul class="feature-bullets">
             <li>Examples for every formula</li>
@@ -297,8 +280,8 @@
         </div>
 
         <div class="feature-grid reverse">
-          <div class="visual-frame">
-            <video autoplay muted loop playsinline preload="auto" class="scroll-audio">
+          <div class="visual-frame" style="aspect-ratio: 9 / 16; max-width: 360px; margin: auto;">
+            <video autoplay muted loop playsinline preload="auto" class="scroll-audio" style="width: 100%; height: 100%; object-fit: cover;">
               <source src="media/grammar-cycle.mp4" type="video/mp4">
             </video>
           </div>
