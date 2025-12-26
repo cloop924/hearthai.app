@@ -104,7 +104,9 @@ img, video { display: block; max-width: 100%; }
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: center;
-  margin-bottom: 80px;
+
+  /* CHANGE #3 — remove huge gap above Method */
+  margin-bottom: 40px; /* was 80px */
 }
 
 .hero h1 {
@@ -316,16 +318,30 @@ img, video { display: block; max-width: 100%; }
 }
 
 /* ----------------------------------------------------
-   RESPONSIVE
+   RESPONSIVE + FIXES YOU REQUESTED
 ---------------------------------------------------- */
 @media (max-width: 820px) {
+
   .hero {
     grid-template-columns: 1fr;
     gap: 36px;
   }
 
+  /* CHANGE #1 — Move CTAs lower on mobile */
+  .hero-ctas {
+    margin-top: 22px;
+  }
+
   .feature-block {
     grid-template-columns: 1fr;
+  }
+
+  /* CHANGE #2 — audio-flow.mp4 800x600 container */
+  #speaking .visual-frame {
+    aspect-ratio: 4 / 3; /* 800 × 600 */
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   .nav { display: none; }
