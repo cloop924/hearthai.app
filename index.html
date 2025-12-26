@@ -29,10 +29,9 @@
     /* The Text Side */
     .split-layout .split-text {
       flex: 1; /* Takes all remaining space */
-      min-width: 0; /* Prevents text from forcing scroll */
+      min-width: 0; 
     }
     
-    /* Remove default margins from paragraphs inside split for cleaner alignment */
     .split-layout .split-text p {
       margin-top: 0;
     }
@@ -53,7 +52,7 @@
       object-fit: cover;
     }
 
-    /* 2. Standalone text blocks (orphaned from previous feature-grids) */
+    /* 2. Standalone text blocks */
     .standalone-text {
       max-width: 800px;
       margin: 0 auto 4rem auto;
@@ -64,7 +63,7 @@
     @media (max-width: 768px) {
       .split-layout {
         flex-direction: row; /* FORCE ROW on mobile */
-        align-items: flex-start; /* Align to top of text usually looks better on small screens if text is long */
+        align-items: flex-start;
         gap: 1rem;
       }
 
@@ -74,7 +73,6 @@
         width: 125px;
       }
       
-      /* Optional: Adjust text size slightly to fit beside image */
       .split-layout .split-text {
         font-size: 0.95rem;
       }
@@ -118,15 +116,13 @@
                 Vocabulary, Phrases, Grammar, Writing, and Speaking.
               </p>
 
-              <div class="hero-pills" style="margin-top: 1rem;">
-                <div class="pill">Premiere Thai Audio</div>
-                <div class="pill">Fast vocab drills</div>
-                <div class="pill">700+ grammar formulas</div>
-              </div>
-
               <div class="hero-ctas" style="margin-top: 1.5rem;">
                 <a class="btn-primary" href="https://hearthai.app" target="_blank">
-                  Download
+                  Download on the App Store
+                </a>
+                <br>
+                 <a class="btn-secondary" href="#how-it-works" style="margin-top:10px; display:inline-block; border:none; padding:0;">
+                  See how HearThai works
                 </a>
               </div>
             </div>
@@ -138,10 +134,7 @@
             </div>
           </div>
           
-          <div class="hero-caption">
-            Built for learners who actually want to speak Thai, not just collect words.
           </div>
-        </div>
       </section>
 
 
@@ -361,7 +354,7 @@
 
         <div class="feature-grid reverse">
           <div class="visual-frame">
-            <video preload="none" playsinline loop class="scroll-audio">
+            <video preload="none" playsinline loop class="scroll-audio" style="width:100%; height:auto;">
               <source src="media/audio-flow.mp4" type="video/mp4">
             </video>
           </div>
