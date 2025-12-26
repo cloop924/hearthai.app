@@ -1,31 +1,66 @@
+<style>
+  /* Local layout for the Vocab Header Split */
+  .vocab-header-split {
+    display: flex;
+    align-items: center; /* Vertically center image with text */
+    gap: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+
+  .vocab-header-split .section-sub {
+    flex: 1; /* Takes up remaining space */
+    margin: 0; /* Remove default margins to align with image */
+  }
+
+  .vocab-header-split .header-img {
+    flex: 1;
+    max-width: 400px; /* Control image size on desktop */
+  }
+
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .vocab-header-split {
+      flex-direction: column; /* Stack them */
+      gap: 1.5rem;
+    }
+    .vocab-header-split .header-img {
+      max-width: 100%; /* Full width on phone */
+      width: 100%;
+    }
+  }
+</style>
+
 <section class="section" id="vocab">
   <div class="section-header">
     <div class="section-kicker">Vocabulary & Phrases</div>
     <h2 class="section-title">Train recall speed, not just recognition</h2>
-    <p class="section-sub">
-      HearThai’s <strong>Vocab</strong> and <strong>Phrases</strong> modes are built for speed.
-      Hear a Thai word or idiom, pick the meaning, and move on.
-    </p>
+    
+    <div class="vocab-header-split">
+      <p class="section-sub">
+        HearThai’s <strong>Vocab</strong> and <strong>Phrases</strong> modes are built for speed.
+        Hear a Thai word or idiom, pick the meaning, and move on.
+      </p>
+      
+      <div class="visual-frame square-frame header-img">
+        <img src="media/vocab-grid.png" alt="Vocabulary grid interface">
+      </div>
+    </div>
   </div>
 
-  <div class="feature-grid">
-    <div class="feature-text">
-      <h3>Hear → tap → move on</h3>
-      <p>
-        Short audio prompts push you to respond quickly instead of staring at lists.
-        Words you know drop out. Words you miss come back more often.
-      </p>
-      <ul class="feature-bullets">
-        <li><strong>Vocab Mode:</strong> Core words and definitions</li>
-        <li><strong>Phrases Mode:</strong> Natural everyday expressions</li>
-        <li>Master known words, repeat hard ones more often</li>
-        <li>Training built around recall speed</li>
-      </ul>
-    </div>
-
-    <div class="visual-frame square-frame">
-        <img src="media/vocab-grid.png" alt="Vocabulary grid interface">
-    </div>
+  <div class="feature-text-block" style="max-width: 800px; margin: 0 auto 4rem auto;">
+    <h3>Hear → tap → move on</h3>
+    <p>
+      Short audio prompts push you to respond quickly instead of staring at lists.
+      Words you know drop out. Words you miss come back more often.
+    </p>
+    <ul class="feature-bullets">
+      <li><strong>Vocab Mode:</strong> Core words and definitions</li>
+      <li><strong>Phrases Mode:</strong> Natural everyday expressions</li>
+      <li>Master known words, repeat hard ones more often</li>
+      <li>Training built around recall speed</li>
+    </ul>
   </div>
 
   <div class="feature-grid reverse">
