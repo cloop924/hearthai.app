@@ -512,12 +512,7 @@ footer {
   .hero { padding: 44px 20px 40px; min-height: auto; }
   .hero h1 { font-size: 34px; }
   .hero-sub { font-size: 15px; margin-bottom: 28px; }
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 20px;
-    text-align: left;
-  }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; text-align: left; }
   .hero-stat-num { font-size: 22px; }
   .hero-visual { max-width: 180px; margin-top: 36px; }
   .hero-cta { display: flex; width: 100%; justify-content: center; font-size: 15px; padding: 15px 24px; }
@@ -533,68 +528,71 @@ footer {
   .numbers-inner { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; }
   .num-val { font-size: 36px; }
 
-  /* Modes grid — swipeable horizontal carousel */
+  /* ── Modes grid — horizontal swipe carousel ── */
   .modes-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     gap: 12px;
     margin-top: 32px;
-    margin-left: -20px;
-    margin-right: -20px;
-    padding: 4px 20px 24px;
+    padding-bottom: 20px;
     scrollbar-width: none;
+    grid-template-columns: none !important;
   }
   .modes-grid::-webkit-scrollbar { display: none; }
   .mode-card {
+    flex: 0 0 75vw !important;
+    width: 75vw !important;
+    min-width: 0;
+    max-width: none;
     scroll-snap-align: start;
-    flex: 0 0 72vw;
-    min-width: 200px;
-    max-width: 260px;
     padding: 20px;
   }
   .mode-visual img,
   .mode-visual .placeholder {
-    max-height: none;
+    max-height: none !important;
     aspect-ratio: 9/16;
     object-position: top;
+    width: 100%;
   }
   .mode-card h3 { font-size: 16px; }
   .mode-card p { font-size: 13px; }
 
   /* Scenario section — image shown, stacked above text */
   .scenario-hero-inner { grid-template-columns: 1fr; gap: 0; }
-  .scenario-hero-visual { display: block; order: -1; }
+  .scenario-hero-visual { display: block !important; }
   .scenario-hero-visual img { max-width: 200px; margin: 0 auto 32px; }
   .scenario-hero-text p { font-size: 15px; }
   .btn-primary { display: flex; width: 100%; justify-content: center; }
 
-  /* Flow steps — swipeable horizontal carousel */
+  /* ── Flow steps — horizontal swipe carousel ── */
   .flow-steps {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     gap: 12px;
     margin-top: 32px;
-    margin-left: -20px;
-    margin-right: -20px;
-    padding: 4px 20px 24px;
+    padding-bottom: 20px;
     scrollbar-width: none;
+    grid-template-columns: none !important;
   }
   .flow-steps::-webkit-scrollbar { display: none; }
   .flow-step {
+    flex: 0 0 70vw !important;
+    width: 70vw !important;
+    min-width: 0;
+    max-width: none;
     scroll-snap-align: start;
-    flex: 0 0 65vw;
-    min-width: 180px;
-    max-width: 240px;
   }
   .flow-steps .flow-step:nth-child(4),
-  .flow-steps .flow-step:nth-child(5) { display: block; }
+  .flow-steps .flow-step:nth-child(5) { display: block !important; }
 
-  /* Feature splits — text only, no video */
+  /* Feature splits — text only */
   .feature-split { grid-template-columns: 1fr; gap: 0; margin-top: 40px; }
   .feature-split .feature-visual { display: none; }
 
